@@ -1,19 +1,19 @@
 import javafx.application.Application;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Main extends Application{
-    private Button sButton = new Button("Start Button");
-    private TextField tField = new TextField();
+    public Button sButton = new Button("Click me");
+    public TextField tField = new TextField();
     public static void main(String[] args) {
         launch(args);
     }
     @Override
     public void start(Stage mainWindow) throws Exception{
-        Group root = new Group();
+        Pane root = new Pane();
         Scene scene = new Scene(root);
         
         int sizeX = 800, sizeY = 600;
@@ -23,6 +23,11 @@ public class Main extends Application{
         mainWindow.setHeight(sizeY);
         mainWindow.setResizable(false);
 
+        sButton.setTranslateX(20);
+        sButton.setTranslateY(20);
+        tField.setTranslateX(20);
+        tField.setTranslateY(60);
+        
         root.getChildren().addAll(sButton, tField);
 
         mainWindow.setScene(scene);
