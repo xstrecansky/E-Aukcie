@@ -4,28 +4,28 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class MainPage {
+public class MainPage{
     public Button logoutButton = new Button("Sign out");
     public Label userID = new Label();
     Pane root = new Pane();
     Scene scene = new Scene(root);
     Stage mainWindow = new Stage();
 
-    MainPage(String username){
+    MainPage(UserClass user){
         mainWindow.setTitle("Main Page");
         mainWindow.setWidth(800);
         mainWindow.setHeight(600);
         mainWindow.setResizable(false);
 
-        userID.setText(username);
+        userID.setText(user.getName());
         userID.setTranslateX(700);
         userID.setTranslateY(25);
         logoutButton.setTranslateX(25);
         logoutButton.setTranslateY(25);
         //Pri kliknuti vytvorime nove prihlasovacie okno a zavrieme toto
         logoutButton.setOnAction(e->{
-            UserData userData = new UserData();
-            new LoginPage(userData.getLoginData());
+            //UserData userData = new UserData();
+            new LoginPage();
             mainWindow.close();
         });
         root.getChildren().addAll(logoutButton, userID);

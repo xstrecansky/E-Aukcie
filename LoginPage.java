@@ -1,4 +1,3 @@
-import java.util.HashMap;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -7,6 +6,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class LoginPage{
+    private UserClass[] database = new UserClass[2];
     public Button loginButton = new Button("Login");
     public TextField IDfield = new TextField();
     public TextField Passwordfield = new TextField();
@@ -19,9 +19,10 @@ public class LoginPage{
     Scene scene = new Scene(root);
     Stage loginWindow = new Stage();
     
-    HashMap<String, String> loginInfo = new HashMap<String, String>();
-    LoginPage(HashMap<String, String> loginData){
-        loginInfo = loginData;
+    LoginPage(){
+        //Prihlasovacie udaje
+        database[0] = new UserClass("kupec", "heslo", 0);
+        database[1] = new UserClass("predajca", "cauko", 1);
         //Nastavenia okna
         loginWindow.setTitle("Login Page");
         loginWindow.setWidth(800);
@@ -31,18 +32,32 @@ public class LoginPage{
         loginButton.setOnAction(e ->{
             String username = IDfield.getText();
             String password = Passwordfield.getText();
-            //Porovname hodnoty z hashmapy
-            if(loginInfo.containsKey(username)){
-                if(loginInfo.get(username).equals(password)){
-                    loginWindow.close();
-                    new MainPage(username);
+            char a[] = username.toCharArray();
+            char c[] = password.toCharArray();
+
+            for(int i=0;i<database.length;i++){
+                /*
+                Z nejakeho dovodu nefunguje porovnavanie stringov
+                namiesto toho porovnavame jednotlive pismena v stringu
+                */
+                String temp = database[i].getName();
+                String tempP = database[i].getPassword();
+                char b[] = temp.toCharArray();
+                char d[] = tempP.toCharArray();
+                int errors = 0;
+                for(int j=0;j<b.length;j++){
+                    if(a[j]!=b[j])
+                        errors = errors+1;
                 }
-                else{
-                    loginMessage.setText("Nespravne heslo");
+                for(int k=0;k<d.length;k++){
+                    if(c[k]!=d[k])
+                        errors = errors+1;
+                }    
+                if(errors==0){
+                    new MainPage(database[i]);
+                    loginWindow.close();
                 }
             }
-            else
-                loginMessage.setText("Pouzivatel neexistuje");
         });
         //Nastavujeme umiestnenie jednotlivych prvkov
         IDtext.setTranslateX(250);
