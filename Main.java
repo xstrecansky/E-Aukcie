@@ -1,8 +1,6 @@
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Main extends Application{
@@ -13,24 +11,10 @@ public class Main extends Application{
     }
     @Override
     public void start(Stage mainWindow) throws Exception{
-        Pane root = new Pane();
-        Scene scene = new Scene(root);
+        UserData userData = new UserData();
+        //Spustime okno pre prihlasovanie
+        new LoginPage(userData.getLoginData());
         
-        int sizeX = 800, sizeY = 600;
-
-        mainWindow.setTitle("Aplikacia");
-        mainWindow.setWidth(sizeX);
-        mainWindow.setHeight(sizeY);
-        mainWindow.setResizable(false);
-
-        sButton.setTranslateX(20);
-        sButton.setTranslateY(20);
-        tField.setTranslateX(20);
-        tField.setTranslateY(60);
-        
-        root.getChildren().addAll(sButton, tField);
-
-        mainWindow.setScene(scene);
-        mainWindow.show();
+        //mainWindow.show();
     }
 }
