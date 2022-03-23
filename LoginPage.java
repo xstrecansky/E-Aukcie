@@ -35,7 +35,7 @@ public class LoginPage{
             if(loginInfo.containsKey(username)){
                 if(loginInfo.get(username).equals(password)){
                     loginWindow.close();
-                    new MainPage();
+                    new MainPage(username);
                 }
                 else{
                     loginMessage.setText("Nespravne heslo");
