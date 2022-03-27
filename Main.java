@@ -1,14 +1,18 @@
 import pages.*;
+import items.*;
+import java.util.ArrayList;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class Main extends Application{
+    public ArrayList<ItemClass> offersDatabase = new ArrayList<>();
     public static void main(String[] args) {
         launch(args);
     }
     @Override
     public void start(Stage mainWindow) throws Exception{
         //Spustime okno pre prihlasovanie
-        new LoginPage();
+        new LoginPage(offersDatabase);
     }
 }
