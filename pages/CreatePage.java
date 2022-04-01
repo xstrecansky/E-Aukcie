@@ -16,6 +16,7 @@ public class CreatePage {
     public Button returnButton = new Button("Return");
     public Button addButton = new Button("Add to auction");
     public Label nameLabel = new Label("Name:");
+    public Label message = new Label("Item added to auction sucessfully");
     public TextField nameField = new TextField();
 
     Pane root = new Pane();
@@ -27,7 +28,6 @@ public class CreatePage {
         createWindow.setWidth(800);
         createWindow.setHeight(600);
         createWindow.setResizable(false);
-
         //Tlacidlo s funkciou vratenia sa na hlavnu stranku
         returnButton.setTranslateX(25);
         returnButton.setTranslateY(25);
@@ -39,7 +39,9 @@ public class CreatePage {
         addButton.setTranslateY(300);
         //Pridame funkciu na pridanie aukcie do suboru
         addButton.setOnAction(e->{
-            offersDatabase.add(new ItemClass(nameField.getText(), user, false, 0));
+            new MainPage(user, user.CreateOffer(offersDatabase, nameField.getText()));
+            new SucessfullPage();
+            createWindow.close();
         });
         nameLabel.setTranslateX(300);
         nameLabel.setTranslateY(250);
