@@ -1,16 +1,14 @@
 package users;
 
+import java.util.ArrayList;
+import items.*;
+
 public class Buyer extends UserClass{
-    public Buyer(){
-        super();
-    }
-    public Buyer(String username, String password){
+    Buyer(String username, String password){
         super(username, password);
     }
-    public int getRole(){
-        return 0;
-    }
-    public void Buy(){
-
+    @Override
+    public ArrayList<ItemClass> MakeOffer(ArrayList<ItemClass> offersDatabase, String text, int value){
+        return offersDatabase;
     }
 }
