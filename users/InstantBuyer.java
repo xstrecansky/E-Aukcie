@@ -1,7 +1,7 @@
 package users;
 
-public class Buyer extends UserClass {
-    Buyer(String username, String password) {
+public class InstantBuyer extends Buyer {
+    InstantBuyer(String username, String password) {
         super(username, password);
     }
 
@@ -9,8 +9,9 @@ public class Buyer extends UserClass {
     /** 
      * @return int
      */
+    // Vratime 3 -> Instant kupec
     @Override
     public int getRole() {
-        return 0;
+        return 3;
     }
 }

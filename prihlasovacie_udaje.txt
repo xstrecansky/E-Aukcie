@@ -1,0 +1,4 @@
+predajca - cauko
+kupec - heslo
+maxo - kupec
+instant - kupec
